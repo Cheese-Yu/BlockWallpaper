@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>自定义分区桌面壁纸</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0" name="viewport">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css" rel="stylesheet">
+  <style>
+    html {
+      font-size: 62.5%;
+    }
+    @media only screen and (min-width: 320px) and (max-width: 359px) {
+      html {
+        font-size: 85.3%;
+      }
+    }
+    @media only screen and (min-width: 360px) and (max-width: 372px) {
+      html {
+        font-size: 91.1%;
+      }
+    }
+    @media only screen and (min-width: 373px) and (max-width: 409px) {
+      html {
+        font-size: 100%;
+      }
+    }
+    @media only screen and (min-width: 410px) and (max-width: 459px) {
+      html {
+        font-size: 110.4%;
+      }
+    }
+    @media only screen and (min-width: 460px) and (max-width: 600px) {
+      html {
+        font-size: 132.2% !important;
+      }
+    }
+    @media only screen and (min-width: 601px) and (max-width: 769px) {
+      html {
+        font-size: 138% !important;
+      }
+    }
+    @media only screen and (min-width: 770px) and (max-width: 1024px) {
+      html {
+        font-size: 150% !important;
+      }
+    }
+    @media only screen and (min-width: 1025px) {
+      html {
+        font-size: 120% !important;
+      }
+    }
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    .flex {
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;  
+      -moz-justify-content: center;  
+      -webkit-justify-content: center;  
+      justify-content: center;  
+      -moz-align-items: center;  
+      -webkit-align-items: center;  
+      align-items: center;  
+    }
+    .table-item {
+      width: 11rem;
+      height: 6.5rem;
+      text-align: center;
+      padding: 10px 20px;
+    }
+    .table-content {
+      width: 50%;
+      padding: 10px 20px;
+      color: #fff;
+    }
+    .table-text {
+      font-size: 2rem;
+      font-weight: bold;
+      letter-spacing: 4px
+    }
+    .table-full {
+      position: absolute;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      z-index: 99;
+    }
+    #download-table {
+      position: absolute;
+      z-index: -99;
+    }
+    .gh-ico {
+      width: 14px;
+      height: 14px;
+      margin-right: 4px;
+      background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJMYXllcl8xIiB4PSIwcHgiIHk9IjBweCIgd2lkdGg9IjQwcHgiIGhlaWdodD0iNDBweCIgdmlld0JveD0iMTIgMTIgNDAgNDAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMTIgMTIgNDAgNDAiIHhtbDpzcGFjZT0icHJlc2VydmUiPjxwYXRoIGZpbGw9IiMzMzMzMzMiIGQ9Ik0zMiAxMy40Yy0xMC41IDAtMTkgOC41LTE5IDE5YzAgOC40IDUuNSAxNS41IDEzIDE4YzEgMC4yIDEuMy0wLjQgMS4zLTAuOWMwLTAuNSAwLTEuNyAwLTMuMiBjLTUuMyAxLjEtNi40LTIuNi02LjQtMi42QzIwIDQxLjYgMTguOCA0MSAxOC44IDQxYy0xLjctMS4yIDAuMS0xLjEgMC4xLTEuMWMxLjkgMC4xIDIuOSAyIDIuOSAyYzEuNyAyLjkgNC41IDIuMSA1LjUgMS42IGMwLjItMS4yIDAuNy0yLjEgMS4yLTIuNmMtNC4yLTAuNS04LjctMi4xLTguNy05LjRjMC0yLjEgMC43LTMuNyAyLTUuMWMtMC4yLTAuNS0wLjgtMi40IDAuMi01YzAgMCAxLjYtMC41IDUuMiAyIGMxLjUtMC40IDMuMS0wLjcgNC44LTAuN2MxLjYgMCAzLjMgMC4yIDQuNyAwLjdjMy42LTIuNCA1LjItMiA1LjItMmMxIDIuNiAwLjQgNC42IDAuMiA1YzEuMiAxLjMgMiAzIDIgNS4xYzAgNy4zLTQuNSA4LjktOC43IDkuNCBjMC43IDAuNiAxLjMgMS43IDEuMyAzLjVjMCAyLjYgMCA0LjYgMCA1LjJjMCAwLjUgMC40IDEuMSAxLjMgMC45YzcuNS0yLjYgMTMtOS43IDEzLTE4LjFDNTEgMjEuOSA0Mi41IDEzLjQgMzIgMTMuNHoiLz48L3N2Zz4=);
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+  }
+    input {
+      padding: 2px 6px;
+      width: 5rem;
+      height: 24px;
+      outline: none;
+      border: solid 1px #fff;
+      text-align: center;
+      color: #666;
+      border-radius: 4px
+    }
+    footer {
+      position: fixed;
+      width:100%;
+      bottom:0;
+      background: #fff;
+      box-shadow: 0 2px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1)
+    }
+  </style>
+</head>
+
+<body style="background: #fff; height: 100vh">
+  <div style="background: #fff">
+    <section class="hero is-dark">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">
+            自定义分区桌面壁纸
+          </h1>
+          <h2 class="subtitle">
+            文字、颜色
+          </h2>
+        </div>
+      </div>
+    </section>
+    <section class="container" style="padding: 2rem 0">
+      <div>
+        <table class="flex">
+          <tbody>
+            <tr style="display: flex;">
+              <td class="flex table-item" style="border-radius:4px 0 0 0;background: #82ccdd;">
+                <div>
+                  <input type="text" value="ing" style="width: 80%;margin-bottom: 12px" onchange="textChange(this, 0)">
+                  <input class="jscolor" value="#82ccdd" onchange="colorChange(this.jscolor, 0)" style="width:55%">
+                </div>
+              </td>
+              <td class="flex table-item" style="border-radius:0 4px 0 0;background: #60a3bc;">
+                <div>
+                  <input type="text" value="常用软件" style="width: 80%;margin-bottom: 12px" onchange="textChange(this, 1)">
+                  <input class="jscolor" value="#60a3bc" onchange="colorChange(this.jscolor, 1)" style="width:55%">
+                </div>
+              </td>
+            </tr>
+            <tr style="display: flex;">
+              <td class="flex table-item" style="border-radius:0 0 0 4px;background: #3c6382;">
+              <div>
+                <input type="text" value="已完成" style="width: 80%;margin-bottom: 12px" onchange="textChange(this, 2)">
+                <input class="jscolor" value="#3c6382" onchange="colorChange(this.jscolor, 2)" style="width:55%">
+              </div>
+              <td class="flex table-item" style="border-radius:0 0 4px 0;background: #0a3d62;">
+                <div>
+                  <input type="text" value="临时文件" style="width: 80%;margin-bottom: 12px" onchange="textChange(this, 3)">
+                  <input class="jscolor" value="#0a3d62" onchange="colorChange(this.jscolor, 3)" style="width:55%">
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div style="padding-top: 2rem">
+        <div class="flex" style="width: 100%;">
+          <div>宽: 
+            <input id="width-text" type="number" value="1920" style="text-align: left;"/> px
+          </div>
+          <div style="width: 6%"></div>
+          <div>高: 
+            <input id="height-text" type="number" value="1080" style="text-align: left;"/> px
+          </div>
+        </div>
+      </div>
+    </section>
+    <div style="padding-bottom: 80px;text-align: center;">
+      <a onclick="preview()" class="button is-primary is-outlined">&nbsp;预览&nbsp;</a>
+      <a onclick="downloads()" class="button is-danger is-outlined" style="margin-left: 10px">&nbsp;下载&nbsp;</a>
+    </div>
+    <footer>
+      <div class="tags has-addons" style="height: 60px; justify-content: center;">
+        <a target="_blank" class="tag is-primary" href="http://www.cheeseyu.cn/">
+          @CheeseYu
+        </a>
+        <a target="_blank" class="tag is-bold" href="https://github.com/Cheese-Yu/BlockWallpaper">
+          <span class="gh-ico" aria-hidden="true"></span><strong>Star</strong>
+        </a>
+      </div>
+    </footer>
+  </div>
+
+  <div id="preview-table" class="table-full" style="display: none;">
+    <div class="table-content flex" style="background: #82ccdd">
+      <h1 class="table-text">ing</h1>
+    </div>
+    <div class="table-content flex" style="background: #60a3bc">
+      <h1 class="table-text">常用软件</h1>
+    </div>
+    <div class="table-content flex" style="background: #3c6382">
+      <h1 class="table-text">已完成</h1>
+    </div>
+    <div class="table-content flex" style="background: #0a3d62">
+      <h1 class="table-text">临时文件</h1>
+    </div>
+  </div>
+  <div id="download-table" class="table-full">
+    <div class="table-content flex"></div>
+    <div class="table-content flex"></div>
+    <div class="table-content flex"></div>
+    <div class="table-content flex"></div>
+  </div>
+  <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/javascript-canvas-to-blob/3.14.0/js/canvas-to-blob.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2014-11-29/FileSaver.min.js"></script>
+  <script>
+    let screenWidth = window.screen.width;
+    let screenHeight = window.screen.height;
+    let tableArr = [
+      {
+        text: 'ing',
+        color: '#82ccdd'
+      },
+      {
+        text: '常用软件',
+        color: '#60a3bc'
+      },
+      {
+        text: '已完成',
+        color: '#3c6382'
+      },
+      {
+        text: '临时文件',
+        color: '#0a3d62'
+      }
+    ];
+
+    // 预览点击隐藏
+    $("#preview-table").click(function(){
+      $("#preview-table").hide(); 
+    });
+
+    // 修改文字
+    function textChange(_this, index) {
+      tableArr[index].text = _this.value;
+    }
+
+    // 修改颜色值
+    function colorChange(jscolor, index) {
+      $('.table-item').eq(index).css('background', '#' + jscolor);
+      tableArr[index].color = '#' + jscolor;
+    }
+
+    // 预览
+    function preview() {
+      for (let i = 0; i < 4; i++) {
+        $('#preview-table .table-content').eq(i).css('background', tableArr[i].color);
+        $('#preview-table').find("h1").eq(i).text(tableArr[i].text);
+      }
+      $('#preview-table').show();
+    }
+
+    // 下载壁纸
+    function downloads() {
+      $('#download-table').show();
+      // 绘制dom元素
+      let width = $('#width-text').val() || screenWidth;
+      let height = $('#height-text').val() || screenHeight;
+      $('#download-table').css('width', width + 'px');
+      $('#download-table').css('height', height + 'px');
+      for (let i = 0; i < 4; i++) {
+        $('#download-table .table-content').eq(i).css('background', tableArr[i].color);
+        $('#download-table .table-content').eq(i).html(`<h1 class="table-text">${tableArr[i].text}</h1>`);
+      }
+      convert2canvas();
+    }
+
+    // html转换成canvas并下载
+    function convert2canvas() {
+      let width = $('#width-text').val() || screenWidth;
+      let height = $('#height-text').val() || screenHeight;
+      let canvas = document.createElement("canvas");
+      let scale = window.devicePixelRatio; //根据分辨率调整
+      canvas.width = width * scale;
+      canvas.height = height * scale;
+      canvas.getContext("2d").scale(scale, scale);
+      const opts = {
+          scale: scale,
+          canvas: canvas,
+          width: width,
+          height: height,
+          useCORS: true //开启跨域
+      };
+
+      html2canvas($('#download-table')[0], opts).then(canvas => {
+        $('#download-table').hide();
+        var context = canvas.getContext('2d');
+        // 关闭抗锯齿
+        context.mozImageSmoothingEnabled = false;
+        context.webkitImageSmoothingEnabled = false;
+        context.msImageSmoothingEnabled = false;
+        context.imageSmoothingEnabled = false;
+        if (canvas.toBlob) {
+          canvas.toBlob(
+            function (blob) {
+              saveAs(blob, 'BlockWallpaper.png');
+            },
+            'image/png'
+          );
+        }
+      });
+    }
+  </script>
+</body>
+</html>
